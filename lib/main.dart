@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ruang_kitab/welcome.dart';
-import 'splashscreen.dart'; // Import your Splashscreen widget
+import 'splashscreen.dart'; 
 
 void main() {
   
   runApp(MaterialApp(
      debugShowCheckedModeBanner: false, // Menonaktifkan banner debug
     routes: {
-      '/': (context) => const Splashscreen(), // Use Splashscreen here
+      '/': (context) => const Splashscreen(), 
        '/welcome' : (context) => Welcome(),
     },
   ));

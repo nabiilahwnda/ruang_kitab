@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ruang_kitab/kitab.dart';
+import 'package:ruang_kitab/penjelasan_kitab.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -36,20 +38,20 @@ class _WelcomeState extends State<Welcome> {
               height: 350,
             ),
           ),
-          // Positioned Row with image and text at the top-left corner
+          // Positioned Row with image and button text at the top-left corner
           Positioned(
             top: 10,
             right: 3,
             child: Row(
               children: [
                 Text(
-                  'Home',
-                  style: TextStyle(
-                    fontSize: 30, // Ukuran font
-                    fontWeight: FontWeight.bold, // Tebal teks
-                    color: Color.fromRGBO(9, 30, 58, 1.0),
+                    'Home',
+                    style: TextStyle(
+                      fontSize: 30, // Ukuran font
+                      fontWeight: FontWeight.bold, // Tebal teks
+                      color: Color.fromRGBO(9, 30, 58, 1.0),
+                    ),
                   ),
-                ),
                 SizedBox(width: 10), // Jarak antara teks dan gambar
                 Image.asset(
                   'assets/img/Home_img.png',
@@ -59,20 +61,19 @@ class _WelcomeState extends State<Welcome> {
               ],
             ),
           ),
-          // Positioned Card below the Buble image
           Positioned(
-            top: 280, // Adjust the top position based on the image height
+            top: 280, 
             right: 10,
-            left: 10, // Adjust the right position
+            left: 10, 
             child: Card(
-              elevation: 5, // For shadow effect
+              elevation: 5, 
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8), // Rounded corners
+                borderRadius: BorderRadius.circular(8), 
               ),
               child: Container(
-                width: 300, // Width of the card
-                height: 150, // Height of the card
-                padding: EdgeInsets.all(10), // Padding inside the card
+                width: 300, 
+                height: 150, 
+                padding: EdgeInsets.all(10), 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -81,12 +82,21 @@ class _WelcomeState extends State<Welcome> {
                       width: 95,
                       height: 95,
                     ),
-                    Text(
-                      'Baca Kitab',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(9, 30, 58, 1.0),
+                    TextButton(
+                      onPressed: () {
+                        // Arahkan ke laman KitabPage
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Kitab()),
+                        );
+                      },
+                      child: Text(
+                        'Baca Kitab',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(9, 30, 58, 1.0),
+                        ),
                       ),
                     ),
                   ],
@@ -95,18 +105,18 @@ class _WelcomeState extends State<Welcome> {
             ),
           ),
           Positioned(
-            top: 455, // Adjust the top position based on the image height
+            top: 455, 
             right: 10,
-            left: 10, // Adjust the right position
+            left: 10, 
             child: Card(
-              elevation: 5, // For shadow effect
+              elevation: 5, 
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8), // Rounded corners
+                borderRadius: BorderRadius.circular(8), 
               ),
               child: Container(
-                width: 300, // Width of the card
-                height: 150, // Height of the card
-                padding: EdgeInsets.all(10), // Padding inside the card
+                width: 300, 
+                height: 150, 
+                padding: EdgeInsets.all(10), 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -115,12 +125,20 @@ class _WelcomeState extends State<Welcome> {
                       width: 95,
                       height: 95,
                     ),
-                    Text(
-                      'Penjelasan Kitab',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(9, 30, 58, 1.0),
+                    TextButton(
+                      onPressed: () {
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PenjelasanKitab()),
+                        );
+                      },
+                      child: Text(
+                        'Penjelasan Kitab',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(9, 30, 58, 1.0),
+                        ),
                       ),
                     ),
                   ],
