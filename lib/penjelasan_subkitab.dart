@@ -1,155 +1,126 @@
 import 'package:flutter/material.dart';
-import 'package:ruang_kitab/sub_bab.dart';
+import 'package:ruang_kitab/kitab.dart';
+import 'package:ruang_kitab/navbar_jlskitab.dart';
+import 'package:ruang_kitab/penjelasan_kitab.dart';
 
 class PenjelasanSubkitab extends StatefulWidget {
   final int index;
 
-  PenjelasanSubkitab(this.index);
+  const PenjelasanSubkitab(this.index, {Key? key}) : super(key: key);
 
   @override
-  _PenjelasanSubBabKitabState createState() => _PenjelasanSubBabKitabState();
+  _PenjelasanSubBabState createState() => _PenjelasanSubBabState();
 }
 
-class _PenjelasanSubBabKitabState extends State<PenjelasanSubkitab> {
+class _PenjelasanSubBabState extends State<PenjelasanSubkitab> {
+  final List<String> items = ['Item 1', 'Item 2', 'Item 3'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      drawer: NavbarJlskitab(items: items),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Penjelasan Kitab ${widget.index}'),
+      ),
+      body: Column(
         children: <Widget>[
-          // Background gradient
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerRight,
-                end: Alignment.centerLeft,
-                colors: [
-                  Color(0xFFFAFFFF), // Warna putih sangat terang
-                  Color(0xFFCDDDEF), // Warna biru muda
-                ],
-              ),
-            ),
-          ),
-
-          // Positioned image "Buble.png"
-          Positioned(
-            top: 2,
-            right: 1,
-            child: Image.asset(
-              'assets/img/Buble.png',
-              width: 350,
-              height: 350,
-            ),
-          ),
-
-          // Title and image at the top
-          Positioned(
-            top: 10,
-            right: 1,
-            child: Row(
-              children: [
-                Text(
-                  'Kitab ${widget.index}', // Display the kitab number
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(9, 30, 58, 1.0),
-                  ),
-                ),
-                SizedBox(width: 20),
-                Image.asset(
-                  'assets/img/Bab_Kitab.png',
-                  width: 200,
-                  height: 150,
-                ),
-              ],
-            ),
-          ),
-
-          // Back button
-          Positioned(
-            top: 95,
-            left: 45,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Image.asset(
-                'assets/img/back.png',
-                width: 50,
-                height: 50,
-              ),
-            ),
-          ),
-
-          // Card with list of items
-          Positioned(
-            top: 265, // Adjust to ensure it's below the buttons
-            right: 10,
-            left: 10,
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Container(
-                width: 320,
-                height: 390,
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    SizedBox(height: 15),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            color: Color.fromRGBO(171, 198, 227, 1.0),
-                            child: ListTile(
-                              leading: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assets/img/logo_no.png',
-                                    width: 50,
-                                    height: 50,
-                                  ),
-                                  Positioned(
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 2,
-                                      ),
-                                      child: Text(
-                                        '${index + 1}',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              title: Text(
-                                'Sub Bab Kitab ${index + 1}',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SubBab(index + 1),
-                                  ),
-                                );
-                              },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 4.0,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Kitab(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: const Center(
+                          child: Text(
+                            'Daftar Kitab',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 3, 32, 65),
+                              fontSize: 16,
                             ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 4.0,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PenjelasanKitab(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: const Center(
+                          child: Text(
+                            'Penjelasan Kitab',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 3, 32, 65),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                itemCount: 15,
+                itemBuilder: (context, index) {
+                  return Card(
+                    margin: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: ListTile(
+                      title: Text('Item ${index + 1}'),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text('Description for item ${index + 1}'),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.play_circle_fill),
+                            onPressed: () {
+                              // Action when icon is pressed
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ),

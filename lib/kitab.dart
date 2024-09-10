@@ -67,7 +67,7 @@ class _Kitab extends State<Kitab> {
           // Back button
           Positioned(
             top: 95,
-            left: 85,
+            left: 95,
             child: TextButton(
               onPressed: () {
                 Navigator.push(
@@ -139,7 +139,7 @@ class _Kitab extends State<Kitab> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BabKitab(index + 1), // Pass the index + 1
+                                    builder: (context) => BabKitab(index + 1), 
                                   ),
                                 );
                               },

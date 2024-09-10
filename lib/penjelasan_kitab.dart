@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ruang_kitab/bab_kitab.dart';
+import 'package:ruang_kitab/penjelasan_subkitab.dart';
 import 'package:ruang_kitab/welcome.dart';
 
 class PenjelasanKitab extends StatefulWidget {
@@ -66,8 +66,8 @@ class _PenjelasanKitab extends State<PenjelasanKitab> {
           
           // Back button
           Positioned(
-            top: 95,
-            left: 85,
+            top: 100,
+            left: 95,
             child: TextButton(
               onPressed: () {
                 Navigator.push(
@@ -132,14 +132,14 @@ class _PenjelasanKitab extends State<PenjelasanKitab> {
                                 ],
                               ),
                               title: Text(
-                                'Kitab ${index + 1}', // Nama kitab dengan nomor urut
+                                'Penjelasan Kitab ${index + 1}', // Nama kitab dengan nomor urut
                                 style: TextStyle(color: Colors.white),
                               ),
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BabKitab(index + 1), // Pass the index + 1
+                                    builder: (context) => PenjelasanSubkitab(index + 1), // Pass the index + 1
                                   ),
                                 );
                               },

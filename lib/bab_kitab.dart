@@ -69,7 +69,7 @@ class _BabKitabState extends State<BabKitab> {
           // Back button
           Positioned(
             top: 95,
-            left: 45,
+            left: 95,
             child: TextButton(
               onPressed: () {
                 Navigator.pop(context);
